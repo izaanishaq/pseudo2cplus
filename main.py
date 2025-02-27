@@ -180,7 +180,7 @@ def generate_code(model, tokenizer, input_text, max_len=128):
 cols = st.columns(2)
 
 with cols[0]:
-    st.image("cover.png", caption="Cover Image", use_column_width=True)
+    st.image("cover.png", caption="Cover Image", use_container_width=True)
 
 with cols[1]:
     st.title("Pseudocode to C++ Code Generator")
