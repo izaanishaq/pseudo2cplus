@@ -177,12 +177,17 @@ def generate_code(model, tokenizer, input_text, max_len=128):
         generated_code = tokenizer.decode(output_tokens[1:], skip_special_tokens=True)
         return generated_code
 
-st.title("Pseudocode to C++ Code Generator")
-st.write("Enter pseudocode below and click the button to generate C++ code.")
+cols = st.columns(2)
 
-input_pseudocode = st.text_area("Pseudocode Input", "for i from 1 to n: print i*i")
-if st.button("Generate C++ Code"):
-    with st.spinner("Generating code..."):
-        generated_cpp = generate_code(model, bert_tokenizer, input_pseudocode)
-        st.subheader("Generated C++ Code:")
-        st.code(generated_cpp, language='cpp')
+with cols[0]:
+    st.image("cover.png", caption="Cover Image", use_column_width=True)
+
+with cols[1]:
+    st.title("Pseudocode to C++ Code Generator")
+    st.write("Enter pseudocode below and click the button to generate C++ code.")
+    input_pseudocode = st.text_area("Pseudocode Input", "for i from 1 to n: print i*i")
+    if st.button("Generate C++ Code"):
+        with st.spinner("Generating code..."):
+            generated_cpp = generate_code(model, bert_tokenizer, input_pseudocode)
+            st.subheader("Generated C++ Code:")
+            st.code(generated_cpp, language='cpp')
